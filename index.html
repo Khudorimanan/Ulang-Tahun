@@ -1,0 +1,548 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Amplop Tahun Baru
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <style>
+   body {
+            background: linear-gradient(to bottom, #87CEEB, #f0f8ff), url('https://placehold.co/1200x800?text=Background+Ulang+Tahun+Pacar') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s forwards;
+        }
+
+        .envelope {
+            font-size: 100px;
+            cursor: pointer;
+            animation: bounce 1s infinite, wobble 1s infinite alternate;
+            color: #1E90FF;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes wobble {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1E90FF;
+            text-shadow: 0 0 10px rgba(30, 144, 255, 0.8), 0 0 20px rgba(30, 144, 255, 0.6);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(30, 144, 255, 0.8), 0 0 20px rgba(30, 144, 255, 0.6);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(30, 144, 255, 1), 0 0 30px rgba(30, 144, 255, 0.8);
+            }
+        }
+
+        .notification {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .notification img {
+            border: 5px solid #1E90FF;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .notification button {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #1E90FF;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #1E90FF;
+            font-weight: bold;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .notification button:hover {
+            background: #1E90FF;
+            color: white;
+        }
+
+        .comment-section textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 20px;
+            border: 2px solid pink;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .comment-section button {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #87CEEB;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #87CEEB;
+            font-weight: bold;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .comment-section button:hover {
+            background: #87CEEB;
+            color: white;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confetti-fall 4s linear infinite;
+            opacity: 0.8;
+        }
+
+        .confetti-piece:nth-child(odd) {
+            background: #FF69B4;
+        }
+
+        .confetti-piece:nth-child(even) {
+            background: #FFD700;
+        }
+
+        .confetti-piece:nth-child(3n) {
+            background: #32CD32;
+        }
+
+        .confetti-piece:nth-child(4n) {
+            background: #1E90FF;
+        }
+
+        .confetti-piece:nth-child(5n) {
+            background: #FF4500;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://placehold.co/20x20?text=Bunga') no-repeat center center;
+            background-size: cover;
+            animation: flower-fall 5s linear infinite;
+        }
+
+        .flower:nth-child(odd) {
+            background: url('https://placehold.co/20x20?text=🌸') no-repeat center center;
+        }
+
+        .flower:nth-child(even) {
+            background: url('https://placehold.co/20x20?text=🌼') no-repeat center center;
+        }
+
+        @keyframes flower-fall {
+            0% {
+                transform: translate(0, 0) rotate(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(100vw, 100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .paper {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .balloons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background: url('https://placehold.co/50x70?text=Balon') no-repeat center center;
+            background-size: cover;
+            margin: 0 10px;
+        }
+
+        .decorations {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-size: cover;
+        }
+
+        .decoration1 {
+            top: 10px;
+            left: 10px;
+            background: url('https://placehold.co/20x20?text=Topi') no-repeat center center;
+        }
+
+        .decoration2 {
+            top: 10px;
+            right: 10px;
+            background: url('https://placehold.co/20x20?text=Bunga') no-repeat center center;
+        }
+
+        .decoration3 {
+            bottom: 10px;
+            left: 10px;
+            background: url('https://placehold.co/20x20?text=Pita') no-repeat center center;
+        }
+
+        .decoration4 {
+            bottom: 10px;
+            right: 10px;
+            background: url('https://placehold.co/20x20?text=Topi') no-repeat center center;
+        }
+  </style>
+ </head>
+ <body>
+    <div class="center-container" id="initialEnvelope" style="background: none; box-shadow: none;">
+        <div class="message">
+            Ada amplop Tahunn Baru nih, buka Yuk!🥰
+        </div>
+        <div class="envelope" onclick="showNotification(1)">
+            <i class="fas fa-envelope">
+            </i>
+        </div>
+        <div class="balloons">
+            <div class="balloon" style="background: url('https://placehold.co/50x70?text=Balon+Merah') no-repeat center center;">
+            </div>
+            <div class="balloon" style="background: url('https://placehold.co/50x70?text=Balon+Kuning') no-repeat center center;">
+            </div>
+            <div class="balloon" style="background: url('https://placehold.co/50x70?text=Balon+Hijau') no-repeat center center;">
+            </div>
+            <div class="balloon" style="background: url('https://placehold.co/50x70?text=Balon+Biru') no-repeat center center;">
+            </div>
+        </div>
+    </div>
+    <div class="center-container notification" id="notification1">
+        <p>
+            Matt Tahun Baru 🥳
+        </p>
+        <img alt="Foto kue ulang tahun" height="200" src="https://storage.googleapis.com/a1aa/image/rTFzqsMXcnr7IlSJTUzN74xbKbF26WQ0YOWgPaUpSuAIuR9E.jpg" width="200"/>
+        <div class="envelope" onclick="showNotification(2)">
+            <i class="fas fa-envelope">
+            </i>
+        </div>
+    </div>
+  <div class="center-container notification" id="notification2">
+   <p>
+    Bukan madu tapi manis☺
+   </p>
+   <img alt="Gambar gift pertama" height="200" src="https://storage.googleapis.com/a1aa/image/ZDme1PMXHwQMHyL1p3onCpPMXKDWQssxieGI7Wrndjwl4G1TA.jpg" width="200"/>
+   <button onclick="showNotification(3)">
+    OK
+   </button>
+  </div>
+  <div class="center-container notification" id="notification3">
+   <img alt="Gambar gift kedua" height="200" src="https://storage.googleapis.com/a1aa/image/PQbxC2PWUfzUDiqB6sUAja8ORwQdVXzraqxietR4qQeHxNqnA.jpg" width="200"/>
+   <button onclick="showNotification(4)">
+    OK
+   </button>
+  </div>
+  <div class="center-container notification" id="notification4">
+   <p>
+    Semoga sehat selalu yaa🤗
+   </p>
+   <img alt="Gambar gift ketiga" height="200" src="https://storage.googleapis.com/a1aa/image/ASAwGDzf2fpRc0EjAjgLI15e0vduip4GB3rKx6M82BmMxNqnA.jpg" width="200"/>
+   <button onclick="showNotification(5)">
+    OK
+   </button>
+  </div>
+  <div class="center-container notification" id="notification5">
+   <img alt="Gambar gift keempat" height="200" src="https://storage.googleapis.com/a1aa/image/uW2JdNS03xZdLpyuTpfzUNLyaValUqsMude1cearhTwFxNqnA.jpg" width="200"/>
+   <button onclick="showNotification(6)">
+    OK
+   </button>
+  </div>
+  <div class="center-container notification" id="notification6">
+   <p>
+    Makasi 🥰telah buat hari hariku bewarna sayang❤
+   </p>
+   <button onclick="showFinalEnvelope()">
+    OK
+   </button>
+  </div>
+  <div class="center-container" id="finalEnvelope" style="display: none;">
+   <div class="message">
+    Balas amplop untuk doi
+   </div>
+   <div class="envelope" onclick="showPaper()">
+    <i class="fas fa-envelope">
+    </i>
+   </div>
+   <div class="paper" id="paper">
+    <p>
+     Katakan sepatah kata dari hati:
+    </p>
+    <textarea id="comment"></textarea>
+    <button onclick="sendComment()">
+     Kirim
+    </button>
+   </div>
+  </div>
+  <div class="center-container notification" id="commentNotification">
+   <p>
+    Kirim pesanmu ke whatsapp🥰
+   </p>
+   <button onclick="sendToWhatsApp()">
+    Okeyy
+   </button>
+  </div>
+  <div class="confetti" id="confetti">
+  </div>
+  <div class="decorations decoration1">
+  </div>
+  <div class="decorations decoration2">
+  </div>
+  <div class="decorations decoration3">
+  </div>
+  <div class="decorations decoration4">
+  </div>
+  <audio id="birthdaySong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+  </audio>
+  <audio id="confettiSound" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+  </audio>
+  <script>
+   let sentMessages = [];
+
+        function showNotification(step) {
+            const currentNotification = document.querySelector('.notification:not([style*="display: none"])');
+            if (currentNotification) {
+                currentNotification.style.animation = 'fadeOut 1s forwards';
+                setTimeout(() => {
+                    currentNotification.style.display = 'none';
+                    displayNotification(step);
+                }, 1000);
+            } else {
+                displayNotification(step);
+            }
+        }
+
+        function displayNotification(step) {
+            document.getElementById('initialEnvelope').style.display = 'none';
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById('notification' + i).style.display = 'none';
+            }
+            const nextNotification = document.getElementById('notification' + step);
+            nextNotification.style.display = 'block';
+            nextNotification.style.animation = 'fadeIn 1s forwards';
+            if (step === 1) {
+                startConfetti();
+                document.getElementById('birthdaySong').play();
+                document.getElementById('confettiSound').play();
+            } else if (step === 2) {
+                setTimeout(stopConfetti, 16000);
+            }
+            if (step === 3) {
+                document.getElementById('notification3').querySelector('.envelope').classList.add('wobble');
+            }
+        }
+
+        function showFinalEnvelope() {
+            const currentNotification = document.querySelector('.notification:not([style*="display: none"])');
+            if (currentNotification) {
+                currentNotification.style.animation = 'fadeOut 1s forwards';
+                setTimeout(() => {
+                    currentNotification.style.display = 'none';
+                    document.getElementById('finalEnvelope').style.display = 'block';
+                    document.getElementById('finalEnvelope').style.animation = 'fadeIn 1s forwards';
+                }, 1000);
+            } else {
+                document.getElementById('finalEnvelope').style.display = 'block';
+                document.getElementById('finalEnvelope').style.animation = 'fadeIn 1s forwards';
+            }
+        }
+
+        function showPaper() {
+            document.getElementById('paper').style.display = 'block';
+            document.getElementById('paper').style.animation = 'fadeIn 1s forwards';
+        }
+
+        function sendComment() {
+            const comment = document.getElementById('comment').value;
+            sentMessages.push(comment);
+            document.getElementById('finalEnvelope').style.animation = 'fadeOut 1s forwards';
+            setTimeout(() => {
+                document.getElementById('finalEnvelope').style.display = 'none';
+                document.getElementById('commentNotification').style.display = 'block';
+                document.getElementById('commentNotification').style.animation = 'fadeIn 1s forwards';
+            }, 1000);
+        }
+
+      function sendToWhatsApp() {
+        const comment = sentMessages[sentMessages.length - 1];
+        const message = `Baca Balasanku🥰 _*"${comment}"*_ 
+        
+        Dari:${"https://73a5347c-a6cb-4906-ae74-80214f41ce1c-00-2b1mskqtf3axn.sisko.replit.dev/"}`;
+        const phoneNumber = '6285655286247';
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+        resetToInitial();
+      }
+
+        function resetToInitial() {
+            document.getElementById('commentNotification').style.animation = 'fadeOut 1s forwards';
+            setTimeout(() => {
+                document.getElementById('commentNotification').style.display = 'none';
+                document.getElementById('initialEnvelope').style.display = 'block';
+                document.getElementById('initialEnvelope').style.animation = 'fadeIn 1s forwards';
+                document.getElementById('finalEnvelope').style.display = 'none';
+                document.getElementById('paper').style.display = 'none';
+                document.getElementById('comment').value = '';
+            }, 1000);
+        }
+
+        function startConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+                confettiPiece.style.left = Math.random() * 100 + 'vw';
+                confettiPiece.style.backgroundColor = getRandomColor();
+                confettiPiece.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confettiPiece.style.animationDelay = Math.random() * 2 + 's';
+                confettiContainer.appendChild(confettiPiece);
+            }
+            for (let i = 0; i < 50; i++) {
+                const flowerPiece = document.createElement('div');
+                flowerPiece.classList.add('flower');
+                flowerPiece.style.left = Math.random() * 100 + 'vw';
+                flowerPiece.style.animationDuration = Math.random() * 4 + 3 + 's';
+                flowerPiece.style.animationDelay = Math.random() * 2 + 's';
+                confettiContainer.appendChild(flowerPiece);
+            }
+        }
+
+        function stopConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const confettiPieces = confettiContainer.querySelectorAll('.confetti-piece, .flower');
+            confettiPieces.forEach((piece, index) => {
+                setTimeout(() => {
+                    piece.style.opacity = '0';
+                }, index * 100);
+            });
+            setTimeout(() => {
+                while (confettiContainer.firstChild) {
+                    confettiContainer.removeChild(confettiContainer.firstChild);
+                }
+                document.getElementById('confettiSound').pause();
+                document.getElementById('confettiSound').currentTime = 0;
+                document.getElementById('birthdaySong').pause();
+                document.getElementById('birthdaySong').currentTime = 0;
+            }, 16000);
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7', '#87CEEB', '#32CD32'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Function to view sent messages
+        function viewSentMessages() {
+            alert("Sent Messages:\n" + sentMessages.join("\n"));
+        }
+  </script>
+ </body>
+</html>
